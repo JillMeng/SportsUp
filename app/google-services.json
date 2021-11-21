@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "992189908411",
+    "project_id": "sportsup-f538a",
+    "storage_bucket": "sportsup-f538a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:992189908411:android:3140d48187411e3682709e",
+        "android_client_info": {
+          "package_name": "mxh810.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "992189908411-4vf16hl8cnkgppt7ag4qtlktlisfe3ec.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM0GCoge5Vr99rZ25cmas_BRX3euuUthw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "992189908411-4vf16hl8cnkgppt7ag4qtlktlisfe3ec.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
