@@ -82,11 +82,11 @@ public class ChatActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
 
         auth = FirebaseAuth.getInstance();
-        userId = auth.getCurrentUser().getUid();
+        /*userId = auth.getCurrentUser().getUid();
 
         userName = Helper.getUserName(this);
         friendId = getIntent().getExtras().getString("friendId");
-        friendName = getIntent().getExtras().getString("friendName");
+        friendName = getIntent().getExtras().getString("friendName");*/
 
         TextView friend = findViewById(R.id.friend_name_view);
         friend.setText(friendName);
@@ -104,7 +104,7 @@ public class ChatActivity extends AppCompatActivity {
                         Toast.LENGTH_SHORT).show();
             }
         });
-        readMessages();
+        //readMessages();
 
         profilePicture = findViewById(R.id.userProfilePicture);
 
@@ -142,7 +142,7 @@ public class ChatActivity extends AppCompatActivity {
                 "chatType", "", ChatActivity.this);
     }
 
-    private void readMessages() {
+    /*private void readMessages() {
         chatItems = new ArrayList<>();
         firebaseFirestore.collection("chats")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -181,7 +181,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     }
                 });
-    }
+    }*/
 
     private void setOwnerPicture(String ownerId, ChatItem item) {
         final String[] picturePath = {Helper.DEFAULT_PICTURE_PATH};
