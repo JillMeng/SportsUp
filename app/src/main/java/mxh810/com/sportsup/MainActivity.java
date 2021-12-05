@@ -23,5 +23,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        Button button_friend = findViewById(R.id.friend);
+        button_friend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(getApplicationContext(), FriendList.class);
+                startActivity(intent);
+            }
+        });
     }
 }

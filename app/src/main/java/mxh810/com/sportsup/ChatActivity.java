@@ -183,7 +183,7 @@ public class ChatActivity extends AppCompatActivity {
                 });
     }*/
 
-    private void setOwnerPicture(String ownerId, ChatItem item) {
+    /*private void setOwnerPicture(String ownerId, ChatItem item) {
         final String[] picturePath = {Helper.DEFAULT_PICTURE_PATH};
         Helper.db.collection("images")
                 .document(ownerId).get().addOnSuccessListener(snapshot -> {
@@ -211,7 +211,7 @@ public class ChatActivity extends AppCompatActivity {
 
         }).addOnFailureListener(exception -> Toast.makeText(ChatActivity.this,
                 "Unable to load image as it is more than 5MB in size",Toast.LENGTH_SHORT).show());
-    }
+    }*/
 
     private void createRecyclerView() {
         if (chatItems!= null && !chatItems.isEmpty()) {
