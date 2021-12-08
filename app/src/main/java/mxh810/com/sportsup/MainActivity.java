@@ -22,11 +22,19 @@ public class MainActivity extends AppCompatActivity {
             case R.id.home:
                 ChangeActivity();
                 break;
+            case R.id.login:
+                LoginActivity();
+                break;
         }
     }
 
     private void ChangeActivity() {
         Intent intent1 = new Intent(MainActivity.this, Dashboard.class);
         startActivity(intent1);
+    }
+
+    private void LoginActivity(){
+        Intent intent2 = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent2);
     }
 }
