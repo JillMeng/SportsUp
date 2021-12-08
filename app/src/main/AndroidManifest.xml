@@ -32,6 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FriendList"/>
+        <activity android:name=".Location"/>
         <activity
             android:name=".ChatActivity"
             android:configChanges="orientation|screenSize"
