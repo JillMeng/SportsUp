@@ -6,11 +6,12 @@
         <entry key="app/src/main/res/drawable/header_background.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_rectangle_background.xml" value="0.32037037037037036" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_info.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_schedule.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_yoga_class.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.5" />
       </map>
     </option>

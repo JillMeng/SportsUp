@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -42,5 +43,18 @@ public class Dashboard extends AppCompatActivity {
                 return false;
             }
         });
+    }
+
+    public void onClick(View view) {
+        switch(view.getId()) {
+            case R.id.layoutYoga:
+                ChangeActivity();
+                break;
+        }
+    }
+
+    private void ChangeActivity() {
+        Intent intent1 = new Intent(Dashboard.this, YogaClass.class);
+        startActivity(intent1);
     }
 }
