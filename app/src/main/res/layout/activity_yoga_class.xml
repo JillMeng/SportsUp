@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
-            android:text="Yoga lessons"
+            android:text="Yoga Classes"
             android:textColor="@color/colorWhite"
             android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,11 +44,10 @@
             android:orientation="vertical" >
 
             <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
-                android:id="@+id/youtube_player_view1"
+                android:id="@+id/youtube_player_view_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-
+                android:layout_marginTop="20dp"
                 app:videoId="TrgNZn0xejo"
                 app:autoPlay="false"
                 app:showFullScreenButton="true" />
@@ -58,7 +57,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-
                 app:videoId="u1RaZTbqu4o"
                 app:autoPlay="false"
                 app:showYouTubeButton="true"
@@ -69,13 +67,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                app:videoId="wvq3b_1VmHo"
+                app:autoPlay="false"
+                app:showFullScreenButton="true" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 app:videoId="nHf-_nczPK8"
-                app:autoPlay="true"
-                app:showFullScreenButton="false" />
+                app:autoPlay="false"
+                app:showFullScreenButton="true" />
+
+            <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                android:id="@+id/youtube_player_view5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:videoId="_I97hwZO2Mc"
+                app:autoPlay="false"
+                app:showFullScreenButton="true" />
         </LinearLayout>
 
     </ScrollView>
 
+    //below code was written to implement YouTube API
 <!--    <ScrollView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="0dp"-->

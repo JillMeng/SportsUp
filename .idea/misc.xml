@@ -4,13 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/header_background.xml" value="0.33" />
+        <entry key="app/src/main/res/drawable/ic_baseline_calendar.xml" value="0.3564102564102564" />
+        <entry key="app/src/main/res/drawable/ic_baseline_dashboard.xml" value="0.3564102564102564" />
+        <entry key="app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.3564102564102564" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_rectangle_background.xml" value="0.32037037037037036" />
-        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_hiitcardio.xml" value="0.33177083333333335" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_recipes.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/activity_schedule.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_weights.xml" value="0.3458333333333333" />
         <entry key="app/src/main/res/layout/activity_yoga_class.xml" value="0.25" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.5" />
       </map>

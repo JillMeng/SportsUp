@@ -48,13 +48,35 @@ public class Dashboard extends AppCompatActivity {
     public void onClick(View view) {
         switch(view.getId()) {
             case R.id.layoutYoga:
-                ChangeActivity();
+                ChangeActivity1();
+                break;
+            case R.id.layoutHiit:
+                ChangeActivity2();
+                break;
+            case R.id.layoutWeight:
+                ChangeActivity3();
+                break;
+            case R.id.layoutRecipe:
+                ChangeActivity4();
                 break;
         }
     }
 
-    private void ChangeActivity() {
-        Intent intent1 = new Intent(Dashboard.this, YogaClass.class);
-        startActivity(intent1);
+    private void ChangeActivity1() {
+        Intent intent = new Intent(Dashboard.this, YogaClass.class);
+        startActivity(intent);
+    }
+
+    private void ChangeActivity2() {
+        Intent intent = new Intent(Dashboard.this, HIITCardio.class);
+        startActivity(intent);
+    }
+    private void ChangeActivity3() {
+        Intent intent = new Intent(Dashboard.this, Weights.class);
+        startActivity(intent);
+    }
+    private void ChangeActivity4() {
+        Intent intent = new Intent(Dashboard.this, Recipes.class);
+        startActivity(intent);
     }
 }

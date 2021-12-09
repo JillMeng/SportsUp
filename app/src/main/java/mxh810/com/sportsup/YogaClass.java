@@ -1,5 +1,6 @@
  package mxh810.com.sportsup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -13,12 +14,13 @@ import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
- public class YogaClass extends YouTubeBaseActivity {
+ public class YogaClass extends AppCompatActivity {
 
      private static final String TAG = "YogaClass";
 
@@ -45,7 +47,8 @@ import java.util.List;
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
          setContentView(R.layout.activity_yoga_class);
-//
+
+
 //
 //         btnPlay1 = (Button) findViewById(R.id.play_button_1);
 //         mYouTubePlayerView1 = (YouTubePlayerView) findViewById(R.id.youtube_player_view_1);
