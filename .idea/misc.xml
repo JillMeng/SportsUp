@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/layout/activity_friend.xml" value="0.21614583333333334" />
         <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/layout/activity_info.xml" value="0.2644927536231884" />
+        <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/layout/activity_location.xml" value="0.21614583333333334" />
+        <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/layout/friend_list.xml" value="0.21614583333333334" />
         <entry key="app/src/main/res/drawable/grey_border_bottom.xml" value="0.18385416666666668" />
         <entry key="app/src/main/res/drawable/header_background.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.1" />

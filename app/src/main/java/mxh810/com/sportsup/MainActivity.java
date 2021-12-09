@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.login:
                 LoginActivity();
                 break;
+            case R.id.friend:
+                FriendActivity();
+            case R.id.location:
+                LocationActivity();
         }
     }
 
@@ -36,5 +40,15 @@ public class MainActivity extends AppCompatActivity {
     private void LoginActivity(){
         Intent intent2 = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent2);
+    }
+
+    private void FriendActivity() {
+        Intent intent3 = new Intent(MainActivity.this, FriendList.class);
+        startActivity(intent3);
+    }
+
+    private void LocationActivity() {
+        Intent intent4 = new Intent(MainActivity.this, Location.class);
+        startActivity(intent4);
     }
 }
