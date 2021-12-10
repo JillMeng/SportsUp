@@ -51,6 +51,8 @@ public class FriendList extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext(), Dashboard.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.schedule:
                         startActivity(new Intent(getApplicationContext()
@@ -63,8 +65,6 @@ public class FriendList extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.friends:
-                        startActivity(new Intent(getApplicationContext(), FriendList.class));
-                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
