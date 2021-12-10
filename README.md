@@ -7,6 +7,6 @@ User Login Page
 DashBoard (Home Page)
 Friends
 User Info
-#Subfunctions Screen
+# Subfunctions Screen
 
 
