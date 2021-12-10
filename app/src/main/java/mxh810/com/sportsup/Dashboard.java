@@ -55,7 +55,7 @@ public class Dashboard extends AppCompatActivity {
                         return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext()
-                                ,Info.class));
+                                ,InfoActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                 }

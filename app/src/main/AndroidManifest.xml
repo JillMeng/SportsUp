@@ -34,9 +34,6 @@
             android:name=".UpdatePassword"
             android:exported="true" />
         <activity
-            android:name=".Info"
-            android:exported="true" />
-        <activity
             android:name=".Dashboard"
             android:exported="true">
             <intent-filter>

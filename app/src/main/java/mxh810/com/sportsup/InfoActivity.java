@@ -1,15 +1,8 @@
 package mxh810.com.sportsup;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,12 +15,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -37,13 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-import static android.app.Activity.RESULT_OK;
-
-public class InfoFragment extends Fragment {
+public class InfoActivity extends Fragment {
 
 
     private FirebaseAuth mAuth;
@@ -61,8 +49,8 @@ public class InfoFragment extends Fragment {
     private static final int CHOICE_FROM_ALBUM_REQUEST_CODE = 4;
     private Context myContext;
 
-    public static InfoFragment newInstance() {
-        return new InfoFragment();
+    public static InfoActivity newInstance() {
+        return new InfoActivity();
     }
 
     @Override
@@ -71,7 +59,7 @@ public class InfoFragment extends Fragment {
 
         myContext = getContext();
 
-        final View view = inflater.inflate(R.layout.info_section, container, false);
+        final View view = inflater.inflate(R.layout.activity_info, container, false);
         currentNameTextView = view.findViewById(R.id.yf_textView7_ui);
         updatePassword = view.findViewById(R.id.yf_linearLayout_updatePassword);
         updateName = view.findViewById(R.id.yf_linearLayout_updateName);
