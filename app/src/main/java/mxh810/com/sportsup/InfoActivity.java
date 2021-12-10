@@ -56,24 +56,8 @@ public class InfoActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_info);
         initial();
-
-        // Show admin activity if the current user is an admin
-        mDatabase.child("Users").child(uid).child("Admin").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.getValue() != null && dataSnapshot.getValue(Double.class) != 0) {
-                    adminContainer.setVisibility(View.VISIBLE);
-                } else {
-                    adminContainer.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
 
         // Show name
         mDatabase.child("Users").child(uid).child("Name").addValueEventListener(new ValueEventListener() {
@@ -90,23 +74,24 @@ public class InfoActivity extends AppCompatActivity {
         // Show avatar
         // https://firebase.google.com/docs/storage/android/download-files
         storage = FirebaseStorage.getInstance();
-        storageReference = storage.getReference().child("avatars/" + uid + ".jpg");
+//        storageReference = storage.getReference().child("images/" + uid + ".jpg");
 
         profileCircleImageView = findViewById(R.id.profileCircleImageView);
-        storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Glide.with(mContext)
-                        .load(bytes)
-                        .into(profileCircleImageView);
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                profileCircleImageView.setImageResource(R.drawable.icon);
-            }
-        });
+        profileCircleImageView.setImageResource(R.drawable.icon);
+//        storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//            @Override
+//            public void onSuccess(byte[] bytes) {
+//                Glide.with(mContext)
+//                        .load(bytes)
+//                        .into(profileCircleImageView);
+//
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                profileCircleImageView.setImageResource(R.drawable.icon);
+//            }
+//        });
 
         // Update name
         updateName.setOnClickListener(new View.OnClickListener() {
