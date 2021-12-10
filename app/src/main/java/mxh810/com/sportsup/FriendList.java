@@ -48,7 +48,7 @@ public class FriendList extends AppCompatActivity {
     private EditText editURL;
     private FloatingActionButton inButton;
     private String addName;
-    private String addURL;
+
 
     private static final String KEY_OF_INSTANCE = "KEY_OF_INSTANCE";
     private static final String NUMBER_OF_ITEMS = "NUMBER_OF_ITEMS";
@@ -184,7 +184,7 @@ public class FriendList extends AppCompatActivity {
                 recycle.setVisibility(View.INVISIBLE);
 
                 builder.setView(view_);
-                builder.setTitle("Enter Name and URL");
+                builder.setTitle("Enter Friend Name");
                 builder.setButton(AlertDialog.BUTTON_NEGATIVE, "cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -197,14 +197,16 @@ public class FriendList extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         addName = editName.getText().toString();
-                        addURL = editURL.getText().toString();
-                        if(Patterns.WEB_URL.matcher(addURL).matches()){
+
+                        /** if的判断条件是输入的name和数据库中已有的name是否相符
+                        * */
+                        if(true){
                             itemList.add(0, new ItemFriend(addName));
                             reviewAdapter.notifyItemInserted(0);
-                            Snackbar snackbar = Snackbar.make(view, "Now create a new link", Snackbar.LENGTH_LONG);
+                            Snackbar snackbar = Snackbar.make(view, "Friend Added", Snackbar.LENGTH_LONG);
                             snackbar.show();
                         }else{
-                            Snackbar snackbar = Snackbar.make(view, "Invalid URL, try again", Snackbar.LENGTH_LONG);
+                            Snackbar snackbar = Snackbar.make(view, "Invalid Name, try again", Snackbar.LENGTH_LONG);
                             snackbar.show();
                         }
                     }
