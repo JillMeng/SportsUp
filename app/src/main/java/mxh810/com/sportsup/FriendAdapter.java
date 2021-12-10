@@ -37,7 +37,6 @@ public class FriendAdapter extends FirebaseRecyclerAdapter<User, FriendAdapter.R
         this.currentUser = user;
     }
 
-
     public static class ReviewHolder extends RecyclerView.ViewHolder {
         private static final String TAG = "ReviewHolder";
         private TextView user_name;
