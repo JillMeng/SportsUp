@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -57,6 +59,35 @@ public class InfoActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
+
+        //Initialize NavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+
+        //Set Dashboard Selected
+        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+
+        //setupFirebaseAuth();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Dashboard.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.schedule:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Schedule.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.info:
+                        return true;
+                }
+                return false;
+            }
+        });
         initial();
         mContext = getApplicationContext();
         // Show name
