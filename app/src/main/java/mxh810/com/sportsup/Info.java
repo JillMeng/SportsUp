@@ -1,5 +1,6 @@
 package mxh810.com.sportsup;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +15,7 @@ public class Info extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.info_section);
 
         //Initialize NavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -32,17 +33,16 @@ public class Info extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.schedule:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Schedule.class));
-                        overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
+                        startActivity(new Intent(getApplicationContext()
+                                ,InfoFragment.class));
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
             }
         });
 
-        
     }
 }
