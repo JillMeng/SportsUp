@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -31,7 +32,7 @@ import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class InfoActivity extends Fragment {
+public class InfoActivity extends AppCompatActivity {
 
 
     private FirebaseAuth mAuth;
@@ -47,28 +48,17 @@ public class InfoActivity extends Fragment {
     private final long ONE_MEGABYTE = 20 * 1024 * 1024;
     private static final int WRITE_SDCARD_PERMISSION_REQUEST_CODE = 1;
     private static final int CHOICE_FROM_ALBUM_REQUEST_CODE = 4;
-    private Context myContext;
+    private Context mContext;
 
     public static InfoActivity newInstance() {
         return new InfoActivity();
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
-
-        myContext = getContext();
-
-        final View view = inflater.inflate(R.layout.activity_info, container, false);
-        currentNameTextView = view.findViewById(R.id.yf_textView7_ui);
-        updatePassword = view.findViewById(R.id.yf_linearLayout_updatePassword);
-        updateName = view.findViewById(R.id.yf_linearLayout_updateName);
-
-
-        mAuth = FirebaseAuth.getInstance();
-        currentUser = mAuth.getCurrentUser();
-        uid = currentUser.getUid();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        initial();
 
         // Show admin activity if the current user is an admin
         mDatabase.child("Users").child(uid).child("Admin").addValueEventListener(new ValueEventListener() {
@@ -103,11 +93,11 @@ public class InfoActivity extends Fragment {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference().child("avatars/" + uid + ".jpg");
 
-        profileCircleImageView = view.findViewById(R.id.profileCircleImageView);
+        profileCircleImageView = findViewById(R.id.profileCircleImageView);
         storageReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
-                Glide.with(myContext)
+                Glide.with(mContext)
                         .load(bytes)
                         .into(profileCircleImageView);
 
@@ -119,13 +109,11 @@ public class InfoActivity extends Fragment {
             }
         });
 
-
-
         // Update name
         updateName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(myContext, UpdateName.class);
+                Intent intent = new Intent(mContext, UpdateName.class);
                 startActivity(intent);
             }
         });
@@ -134,18 +122,21 @@ public class InfoActivity extends Fragment {
         updatePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(myContext, UpdatePassword.class);
+                Intent intent = new Intent(mContext, UpdatePassword.class);
                 startActivity(intent);
             }
         });
-
-        return view;
-
+    }
 
 
+    private void initial() {
 
-
-
-
-}
+        currentNameTextView = findViewById(R.id.yf_textView7_ui);
+        updatePassword = findViewById(R.id.yf_linearLayout_updatePassword);
+        updateName = findViewById(R.id.yf_linearLayout_updateName);
+        mAuth = FirebaseAuth.getInstance();
+        currentUser = mAuth.getCurrentUser();
+        uid = currentUser.getUid();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+    }
 }
