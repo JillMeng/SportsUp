@@ -58,6 +58,10 @@ public class Dashboard extends AppCompatActivity {
                                 ,Info.class));
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.friends:
+                        startActivity(new Intent(getApplicationContext(), FriendList.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }

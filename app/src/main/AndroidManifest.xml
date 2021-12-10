@@ -13,6 +13,7 @@
         android:theme="@style/Theme.SportsUp">
         <activity android:name=".LoginActivity" />
         <activity android:name=".Register" />
+        <activity android:name=".FriendList" />
         <activity
             android:name=".Recipes"
             android:exported="true" />
