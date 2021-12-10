@@ -34,7 +34,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InfoActivity extends AppCompatActivity {
 
-
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private TextView currentNameTextView;
