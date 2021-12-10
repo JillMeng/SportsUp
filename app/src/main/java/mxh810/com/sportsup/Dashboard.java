@@ -13,6 +13,7 @@ import android.view.View;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.gson.Gson;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -23,6 +24,8 @@ public class Dashboard extends AppCompatActivity {
     //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+
+    private Gson gson = new Gson();
 
 
     @Override
@@ -108,6 +111,8 @@ public class Dashboard extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
 
+                Log.e(TAG, "current user is {}" + gson.toJson(user));
+
                 //check if the user is logged in
                 checkCurrentUser(user);
 
@@ -129,6 +134,21 @@ public class Dashboard extends AppCompatActivity {
         if(user == null){
             Intent intent = new Intent(mContext, LoginActivity.class);
             startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
+        checkCurrentUser(mAuth.getCurrentUser());
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
         }
     }
 }
