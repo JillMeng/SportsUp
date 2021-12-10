@@ -58,7 +58,7 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
         initial();
-
+        mContext = getApplicationContext();
         // Show name
         mDatabase.child("Users").child(uid).child("Name").addValueEventListener(new ValueEventListener() {
             @Override
