@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_centerVertical="false"
-    android:paddingHorizontal="10dp"
-    android:paddingVertical="10dp">
+    >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,6 +28,7 @@
                     android:layout_alignParentTop="false"
                     android:layout_centerVertical="true"
                     android:maxLines="2"
+                    android:paddingLeft="5dp"
                     android:text="Hello!"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -56,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:paddingLeft="5dp"
                 android:text="General Settings"
                 android:textStyle="bold" />
 
@@ -73,7 +74,7 @@
                     android:adjustViewBounds="true"
                     android:cropToPadding="true"
                     android:maxWidth="40dp"
-                    android:src="@drawable/forward_arrow" />
+                    android:src="@drawable/account_circle" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -133,5 +134,15 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/navigation"
+        app:itemBackground="@color/colorPrimary"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
