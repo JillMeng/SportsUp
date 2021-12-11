@@ -78,7 +78,6 @@ public class PostActivity extends AppCompatActivity {
                     case R.id.friends:
                         Intent intent = new Intent(getApplicationContext(), FriendList.class);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("current_user_id", currentUser.getUid());
                         intent.putExtras(bundle);
                         startActivity(intent);
                         overridePendingTransition(0,0);
