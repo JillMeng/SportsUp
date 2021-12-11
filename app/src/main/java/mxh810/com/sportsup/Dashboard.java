@@ -48,9 +48,9 @@ public class Dashboard extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.dashboard:
                         return true;
-                    case R.id.schedule:
+                    case R.id.reminder:
                         startActivity(new Intent(getApplicationContext()
-                                ,Schedule.class));
+                                , Reminder.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:

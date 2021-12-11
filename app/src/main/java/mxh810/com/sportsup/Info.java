@@ -31,9 +31,9 @@ public class Info extends AppCompatActivity {
                                 ,Dashboard.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.schedule:
+                    case R.id.reminder:
                         startActivity(new Intent(getApplicationContext()
-                                ,Schedule.class));
+                                , Reminder.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
@@ -42,7 +42,5 @@ public class Info extends AppCompatActivity {
                 return false;
             }
         });
-
-        
     }
 }
