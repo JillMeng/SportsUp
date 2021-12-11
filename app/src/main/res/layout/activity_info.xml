@@ -186,14 +186,31 @@
 
 
             <ImageView
-                android:id="@+id/image"
-                android:layout_width="400dp"
-                android:layout_height="400dp"
+                android:id="@+id/image_post"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
                 android:layout_centerHorizontal="true"/>
+
+
 
         </LinearLayout>
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Location: "
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/navigation"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+/>
 
 
 
