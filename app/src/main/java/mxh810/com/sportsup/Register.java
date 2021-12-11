@@ -41,7 +41,6 @@ public class Register extends AppCompatActivity {
     private FireBaseUtil firebaseUtil;
 
     private DatabaseReference myRef;
-    private String append = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,10 +103,8 @@ public class Register extends AppCompatActivity {
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             //1st check: Make sure the username is not already in use
                             if(firebaseUtil.checkIfUsernameExists(username, dataSnapshot)){
-                                append = myRef.push().getKey().substring(3,10);
-                                Log.d(TAG, "onDataChange: username already exists. Appending random string to name: " + append);
+                                Log.d(TAG, "username already exists");
                             }
-                            username = username + append;
 
                             //add new user to the database
                             firebaseUtil.addNewUser(email, username, password, "", "");

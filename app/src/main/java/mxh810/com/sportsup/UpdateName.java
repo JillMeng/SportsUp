@@ -49,7 +49,7 @@ public class UpdateName extends AppCompatActivity {
         }
 
         // Show name
-        mDatabase.child("Users").child(uid).child("Name").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("user_account_settings").child(uid).child("username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentNameTextView.setText(dataSnapshot.getValue(String.class));
@@ -74,7 +74,7 @@ public class UpdateName extends AppCompatActivity {
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
-                mDatabase.child("Users").child(uid).child("Name").setValue(newName);
+                mDatabase.child("user_account_settings").child(uid).child("username").setValue(newName);
                 Snackbar.make(findViewById(android.R.id.content), "Updating finished", Snackbar.LENGTH_SHORT).show();
                 updateName.setText("Submit");
                 newNameEditText.setText("");

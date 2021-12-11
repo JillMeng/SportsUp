@@ -9,10 +9,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
 public class Dashboard extends AppCompatActivity {
@@ -23,7 +29,9 @@ public class Dashboard extends AppCompatActivity {
 
     //firebase
     private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
 
     private Gson gson = new Gson();
 
@@ -141,6 +149,21 @@ public class Dashboard extends AppCompatActivity {
         }
     }
 
+    private void showName(FirebaseUser user){
+        String uid = user.getUid();
+        TextView userName = (TextView) findViewById(R.id.textUsername);
+        // Show name
+        mDatabase.child("user_account_settings").child(uid).child("username").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userName.setText(dataSnapshot.getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
     @Override
     public void onStart() {
         super.onStart();

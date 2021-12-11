@@ -60,7 +60,7 @@ public class InfoActivity extends AppCompatActivity {
         initial();
 
         // Show name
-        mDatabase.child("Users").child(uid).child("Name").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("user_account_settings").child(uid).child("username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentNameTextView.setText("Hello " + dataSnapshot.getValue(String.class) + "!");

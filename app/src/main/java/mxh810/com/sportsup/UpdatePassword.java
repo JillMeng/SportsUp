@@ -69,7 +69,7 @@ public class UpdatePassword extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Snackbar.make(findViewById(android.R.id.content), "Password updating successful", Snackbar.LENGTH_SHORT).show();
-                                                        mDatabase.child("Users").child(uid).child("Password").setValue(newPassword);
+                                                        mDatabase.child("user_account_settings").child(uid).child("password").setValue(newPassword);
                                                     } else {
                                                         Snackbar.make(findViewById(android.R.id.content), "Password updating failed", Snackbar.LENGTH_SHORT).show();
                                                     }

@@ -69,13 +69,8 @@ public class FireBaseUtil {
     }
 
     public void addNewUser(String email, String username, String password, String description, String profile_photo) {
-        User user = new User(userID, email, username.replace(" ", "."));
-        myRef.child(mContext.getString(R.string.user_account_settings))
-                .child(userID)
-                .setValue(user);
 
-
-        UserInfo userInfo = new UserInfo(username, password, description, profile_photo);
+        UserInfo userInfo = new UserInfo(username.trim(), password, description, profile_photo);
 
         myRef.child(mContext.getString(R.string.user_account_settings))
                 .child(userID)

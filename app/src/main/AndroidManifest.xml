@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SportsUp">
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".Dashboard" />
         <activity android:name=".Register" />
         <activity android:name=".FriendList" />
         <activity android:name=".InfoActivity" />
@@ -36,7 +36,7 @@
             android:name=".UpdatePassword"
             android:exported="true" />
         <activity
-            android:name=".Dashboard"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

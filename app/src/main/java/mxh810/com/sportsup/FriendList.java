@@ -61,7 +61,7 @@ public class FriendList extends AppCompatActivity {
                         return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext()
-                                ,Info.class));
+                                ,FriendList.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.friends:
