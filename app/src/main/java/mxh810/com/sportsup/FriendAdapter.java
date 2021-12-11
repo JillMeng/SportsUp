@@ -16,24 +16,24 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.ObservableSnapshotArray;
 
 
-import mxh810.com.sportsup.Util.User;
+import mxh810.com.sportsup.model.Friend;
 
 
-public class FriendAdapter extends FirebaseRecyclerAdapter<User, FriendAdapter.ReviewHolder> {
+public class FriendAdapter extends FirebaseRecyclerAdapter<Friend, FriendAdapter.ReviewHolder> {
 
     private final String TAG = FriendAdapter.class.getSimpleName();
 
-    private static User currentUser;
+    private static Friend currentUser;
 
-    public FriendAdapter(@NonNull FirebaseRecyclerOptions<User> options) {
+    public FriendAdapter(@NonNull FirebaseRecyclerOptions<Friend> options) {
         super(options);
         Log.i(TAG, "constructor");
-        ObservableSnapshotArray<User> array = options.getSnapshots();
+        ObservableSnapshotArray<Friend> array = options.getSnapshots();
         Log.i(TAG, "constructor" + array.toString());
 
     }
 
-    public void setCurrentUser(User user) {
+    public void setCurrentUser(Friend user) {
         this.currentUser = user;
     }
 
@@ -54,7 +54,7 @@ public class FriendAdapter extends FirebaseRecyclerAdapter<User, FriendAdapter.R
                     Intent intent = new Intent(friendView.getContext(), Dashboard.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("current_user",currentUser);
-                    bundle.putSerializable("target_user", new User(user_name.getText().toString(),user_devise_id));
+                    bundle.putSerializable("target_user", new Friend(user_name.getText().toString(),user_devise_id));
                     intent.putExtras(bundle);
                     Log.v(TAG, user_name.getText().toString());
                     friendView.getContext().startActivity(intent);
@@ -72,7 +72,7 @@ public class FriendAdapter extends FirebaseRecyclerAdapter<User, FriendAdapter.R
     }
 
     @Override
-    protected void onBindViewHolder(@NonNull ReviewHolder holder, int position, @NonNull User model) {
+    protected void onBindViewHolder(@NonNull ReviewHolder holder, int position, @NonNull Friend model) {
         holder.user_name.setText(model.getUserName());
         holder.user_devise_id = model.getToken();
         Log.i(TAG, "inBindViewHolder" + position);

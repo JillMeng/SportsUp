@@ -22,6 +22,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.io.Serializable;
+
+import mxh810.com.sportsup.model.User;
 import mxh810.com.sportsup.utils.UniversalImageLoader;
 
 public class Dashboard extends AppCompatActivity {
@@ -73,7 +76,11 @@ public class Dashboard extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.friends:
-                        startActivity(new Intent(getApplicationContext(), FriendList.class));
+                        Intent intent = new Intent(getApplicationContext(), FriendList.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("current_user_id", currentUser.getUid());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                 }

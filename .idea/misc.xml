@@ -26,6 +26,7 @@
         <entry key="app/src/main/res/drawable/white_grey_border_bottom.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/drawable/white_rectangle_background.xml" value="0.32037037037037036" />
         <entry key="app/src/main/res/layout/activity_dashboard.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_friend.xml" value="0.27309782608695654" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_post.xml" value="0.16458333333333333" />
