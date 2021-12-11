@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -79,6 +78,35 @@ public class InfoActivity extends AppCompatActivity {
                         return true;
                     case R.id.schedule:
                         startActivity(new Intent(getApplicationContext()
+                                ,Schedule.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.info:
+                        return true;
+                }
+                return false;
+            }
+        });
+
+        //Initialize NavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+
+        //Set Dashboard Selected
+        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+
+        //setupFirebaseAuth();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Dashboard.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.schedule:
+                        startActivity(new Intent(getApplicationContext()
                                 ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
@@ -91,7 +119,7 @@ public class InfoActivity extends AppCompatActivity {
         initial();
         mContext = getApplicationContext();
         // Show name
-        mDatabase.child("user_account_settings").child(uid).child("username").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("Users").child(uid).child("Name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 currentNameTextView.setText("Hello " + dataSnapshot.getValue(String.class) + "!");
