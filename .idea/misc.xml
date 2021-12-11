@@ -3,7 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/drawable/account_circle.xml" value="0.22864583333333333" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.225" />
         <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/drawable/baseline_email.xml" value="0.41384615384615386" />
         <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/drawable/baseline_face.xml" value="0.41384615384615386" />
         <entry key="..\:/Users/Jie Kuai/AndroidStudioProjects/SportsUp/app/src/main/res/drawable/forward_arrow.xml" value="0.22864583333333333" />
@@ -26,6 +26,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_schedule.xml" value="0.38958333333333334" />
         <entry key="app/src/main/res/layout/activity_user_info.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_weights.xml" value="0.16770833333333332" />
+        <entry key="app/src/main/res/layout/info_section.xml" value="0.29483695652173914" />
         <entry key="app/src/main/res/menu/menu_navigation.xml" value="0.5" />
       </map>
     </option>
