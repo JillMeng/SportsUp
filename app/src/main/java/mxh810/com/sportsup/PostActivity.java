@@ -27,6 +27,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 import mxh810.com.sportsup.utils.PermissionUtil;
 
 public class PostActivity extends AppCompatActivity {
@@ -179,7 +181,7 @@ public class PostActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CAMERA_REQUEST_CODE) {
+        if (requestCode == CAMERA_REQUEST_CODE && Objects.nonNull(data)) {
             Log.d(TAG, "onActivityResult: done taking a photo.");
             Log.d(TAG, "onActivityResult: attempting to navigate to final share screen.");
             locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
@@ -204,6 +206,9 @@ public class PostActivity extends AppCompatActivity {
             } catch (NullPointerException e) {
                 Log.d(TAG, "onActivityResult: NullPointerException: " + e.getMessage());
             }
+        }else{
+            Intent intent = new Intent(this, PostActivity.class);
+            startActivity(intent);
         }
     }
     LocationListener locationListenerGPS = new LocationListener() {
