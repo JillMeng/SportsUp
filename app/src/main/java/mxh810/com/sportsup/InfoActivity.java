@@ -131,6 +131,7 @@ public class InfoActivity extends AppCompatActivity {
 //                return false;
 //            }
 //        });
+
         initial();
         mContext = getApplicationContext();
         // Show name
