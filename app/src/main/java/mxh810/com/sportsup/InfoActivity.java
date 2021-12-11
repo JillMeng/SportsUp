@@ -65,31 +65,30 @@ public class InfoActivity extends AppCompatActivity {
         //Set Dashboard Selected
         bottomNavigationView.setSelectedItemId(R.id.dashboard);
 
-        //setupFirebaseAuth();
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Dashboard.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.schedule:
-                        startActivity(new Intent(getApplicationContext()
-                                ,PostActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.info:
-                        return true;
-                }
-                return false;
-            }
-        });
+//        //setupFirebaseAuth();
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                switch (menuItem.getItemId()) {
+//                    case R.id.dashboard:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,Dashboard.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    case R.id.schedule:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,PostActivity.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    case R.id.info:
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
 
         //Set Dashboard Selected
-        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+        bottomNavigationView.setSelectedItemId(R.id.post);
 
         //setupFirebaseAuth();
 
@@ -102,12 +101,20 @@ public class InfoActivity extends AppCompatActivity {
                                 ,Dashboard.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.schedule:
+                    case R.id.post:
                         startActivity(new Intent(getApplicationContext()
                                 ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
+                        return true;
+                    case R.id.friends:
+                        Intent intent = new Intent(getApplicationContext(), FriendList.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("current_user_id", currentUser.getUid());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
                         return true;
                 }
                 return false;

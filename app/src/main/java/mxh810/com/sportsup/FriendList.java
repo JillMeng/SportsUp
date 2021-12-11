@@ -72,7 +72,7 @@ public class FriendList extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Dashboard.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.schedule:
+                    case R.id.post:
                         startActivity(new Intent(getApplicationContext()
                                 ,PostActivity.class));
                         overridePendingTransition(0,0);
