@@ -5,4 +5,23 @@
     <string name="auth_failed">Failed to Authenticate</string>
     <string name="auth_success">Authentication Success</string>
     <string name="user_account_settings">user_account_settings</string>
+    <string name="gallery">GALLERY</string>
+    <string name="photo">PHOTO</string>
+    <string name="string_open_camera">OPEN CAMERA</string>
+    <string name="string_next">NEXT</string>
+    <string name="string_share">SHARE</string>
+    <string name="update_avatar">UPDATE AVATAR</string>
+
+
+    <string name="calling_activity">calling_activity</string>
+    <string name="selected_image">selected_image</string>
+    <string name="return_to_fragment">return_to_fragment</string>
+    <string name="selected_bitmap">selected_bitmap</string>
+    <string name="intent_user">intent_user</string>
+    <string name="dbname_photos">photos</string>
+    <string name="dbname_user_photos">user_photos</string>
+    <string name="view_profile_fragment">ViewProfile</string>
+    <string name="new_photo">new_photo</string>
+    <string name="search_activity">Search Activity</string>
+    <string name="profile_photo">profile_photo</string>
 </resources>

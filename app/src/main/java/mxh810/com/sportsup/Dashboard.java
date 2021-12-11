@@ -20,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import mxh810.com.sportsup.utils.UniversalImageLoader;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -41,6 +44,7 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_dashboard);
+        initImageLoader();
 
         //Initialize NavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -60,7 +64,7 @@ public class Dashboard extends AppCompatActivity {
                         return true;
                     case R.id.schedule:
                         startActivity(new Intent(getApplicationContext()
-                                ,Schedule.class));
+                                ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
@@ -167,6 +171,12 @@ public class Dashboard extends AppCompatActivity {
             }
         });
     }
+
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
+    }
+
     @Override
     public void onStart() {
         super.onStart();
