@@ -78,8 +78,16 @@ public class SavePostActivity extends AppCompatActivity {
                 //upload the image to firebase
                 Toast.makeText(SavePostActivity.this, "Attempting to upload new photo", Toast.LENGTH_SHORT).show();
                 String caption = mCaption.getText().toString();
-                mFirebaseMethods.uploadNewPhoto( caption, bitmap);
-
+                Intent intent = getIntent();
+                Bundle extras = intent.getExtras();
+                String latitude = (String)extras.get("location_latitude");
+                String longitude = (String)extras.get("location_longitude");
+                StringBuilder sb = new StringBuilder("latitude: ");
+                sb.append(latitude);
+                sb.append(". longitude: ");
+                sb.append(longitude);
+                sb.append(" .");
+                mFirebaseMethods.uploadNewPhoto(caption, bitmap, sb.toString());
             }
         });
 

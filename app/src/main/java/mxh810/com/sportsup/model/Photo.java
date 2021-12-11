@@ -11,6 +11,7 @@ public class Photo implements Parcelable {
     private String photo_id;
     private String user_id;
     private String tags;
+    private String locationInfo;
 
 
     public Photo() {
@@ -93,6 +94,14 @@ public class Photo implements Parcelable {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String getLocationInfo() {
+        return locationInfo;
+    }
+
+    public void setLocationInfo(String locationInfo) {
+        this.locationInfo = locationInfo;
     }
 
     @Override
