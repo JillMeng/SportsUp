@@ -46,7 +46,7 @@ public class Register extends AppCompatActivity {
     private FireBaseUtil firebaseUtil;
 
     private DatabaseReference myRef;
-    private String CLIENT_REGISTRATION_TOKEN;
+    private String CLIENT_REGISTRATION_TOKEN = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,21 +67,6 @@ public class Register extends AppCompatActivity {
                     loadingPleaseWait.setVisibility(View.VISIBLE);
 
                     firebaseUtil.registerNewEmail(email, password, username);
-                    FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
-                        @Override
-                        public void onComplete(@NonNull Task<String> task) {
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(Register.this, "Something is wrong, please check your Internet connection!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                if (CLIENT_REGISTRATION_TOKEN.length() < 1) {
-                                    CLIENT_REGISTRATION_TOKEN = task.getResult();
-                                }
-                                Log.e("CLIENT_REGISTRATION_TOKEN", CLIENT_REGISTRATION_TOKEN);
-                                Toast.makeText(Register.this, "CLIENT_TOKEN IS: " + CLIENT_REGISTRATION_TOKEN, Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    });
                     DatabaseReference userList = mFirebaseDatabase.getReference("user");
                     Friend user = new Friend(username, CLIENT_REGISTRATION_TOKEN);
                     userList.child(username).setValue(CLIENT_REGISTRATION_TOKEN);
