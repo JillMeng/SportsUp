@@ -35,6 +35,7 @@ public class PostActivity extends AppCompatActivity {
     private static final int VERIFY_PERMISSIONS_REQUEST = 1;
     private Context mContext = PostActivity.this;
     private ViewPager mViewPager;
+    private FirebaseUser current_user;
     LocationManager locationManager;
     double latitude_;
     double longitude_;
@@ -52,8 +53,6 @@ public class PostActivity extends AppCompatActivity {
         //Initialize NavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
 
-        //Set Dashboard Selected
-        bottomNavigationView.setSelectedItemId(R.id.post);
         //Set Dashboard Selected
         bottomNavigationView.setSelectedItemId(R.id.post);
 

@@ -53,7 +53,6 @@ public class FriendAdapter extends FirebaseRecyclerAdapter<Friend, FriendAdapter
                 if (position != RecyclerView.NO_POSITION) {
                     Intent intent = new Intent(friendView.getContext(), Dashboard.class);
                     Bundle bundle = new Bundle();
-                    bundle.putSerializable("current_user",currentUser);
                     bundle.putSerializable("target_user", new Friend(user_name.getText().toString(),user_devise_id));
                     intent.putExtras(bundle);
                     Log.v(TAG, user_name.getText().toString());
