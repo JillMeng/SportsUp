@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -63,7 +64,7 @@ public class InfoActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
 
         //Set Dashboard Selected
-        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+        bottomNavigationView.setSelectedItemId(R.id.info);
 
         //setupFirebaseAuth();
 
@@ -76,43 +77,60 @@ public class InfoActivity extends AppCompatActivity {
                                 ,Dashboard.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.schedule:
+                    case R.id.post:
                         startActivity(new Intent(getApplicationContext()
                                 ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
                         return true;
+                    case R.id.friends:
+                        startActivity(new Intent(getApplicationContext(), FriendList.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
         });
 
-        //Set Dashboard Selected
-        bottomNavigationView.setSelectedItemId(R.id.dashboard);
-
-        //setupFirebaseAuth();
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        Button reminderBtn = findViewById(R.id.setReminder);
+        reminderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.dashboard:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Dashboard.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.schedule:
-                        startActivity(new Intent(getApplicationContext()
-                                ,PostActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
-                    case R.id.info:
-                        return true;
-                }
-                return false;
+            public void onClick(View view) {
+                Intent intent = new Intent(InfoActivity.this, Reminder.class);
+                startActivity(intent);
             }
         });
+
+//        //Set Dashboard Selected
+//        bottomNavigationView.setSelectedItemId(R.id.dashboard);
+//
+//        //setupFirebaseAuth();
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+//                switch (menuItem.getItemId()) {
+//                    case R.id.dashboard:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,Dashboard.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    case R.id.post:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,PostActivity.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    case R.id.info:
+//                        return true;
+//                    case R.id.friends:
+//                        startActivity(new Intent(getApplicationContext(), FriendList.class));
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
         initial();
         mContext = getApplicationContext();
         // Show name

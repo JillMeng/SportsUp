@@ -62,7 +62,7 @@ public class Dashboard extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.dashboard:
                         return true;
-                    case R.id.schedule:
+                    case R.id.post:
                         startActivity(new Intent(getApplicationContext()
                                 ,PostActivity.class));
                         overridePendingTransition(0,0);

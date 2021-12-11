@@ -7,9 +7,9 @@
         android:icon="@drawable/ic_baseline_dashboard" />
 
     <item
-        android:id="@+id/reminder"
-        android:title="Reminder"
-        android:icon="@drawable/ic_baseline_calendar" />
+        android:id="@+id/post"
+        android:title="Post"
+        android:icon="@drawable/ic_baseline_camera" />
 
     <item
         android:id="@+id/friends"
