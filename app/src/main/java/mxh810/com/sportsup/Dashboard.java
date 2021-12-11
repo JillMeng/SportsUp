@@ -9,11 +9,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import mxh810.com.sportsup.utils.UniversalImageLoader;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -23,7 +32,9 @@ public class Dashboard extends AppCompatActivity {
 
     //firebase
     private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference mDatabase;
 
     private Gson gson = new Gson();
 
@@ -33,6 +44,7 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_dashboard);
+        initImageLoader();
 
         //Initialize NavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
@@ -41,6 +53,8 @@ public class Dashboard extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.dashboard);
 
         setupFirebaseAuth();
+        currentUser = mAuth.getCurrentUser();
+        showName(currentUser);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -48,14 +62,14 @@ public class Dashboard extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.dashboard:
                         return true;
-                    case R.id.reminder:
+                    case R.id.schedule:
                         startActivity(new Intent(getApplicationContext()
-                                , Reminder.class));
+                                ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext()
-                                ,Info.class));
+                                ,InfoActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.friends:
@@ -108,6 +122,7 @@ public class Dashboard extends AppCompatActivity {
     private void setupFirebaseAuth(){
         Log.d(TAG, "setupFirebaseAuth: setting up firebase auth.");
 
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -139,6 +154,27 @@ public class Dashboard extends AppCompatActivity {
             Intent intent = new Intent(mContext, LoginActivity.class);
             startActivity(intent);
         }
+    }
+
+    private void showName(FirebaseUser user){
+        String uid = user.getUid();
+        TextView userName = (TextView) findViewById(R.id.textUsername);
+        // Show name
+        mDatabase.child("user_account_settings").child(uid).child("username").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userName.setText(dataSnapshot.getValue(String.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    private void initImageLoader(){
+        UniversalImageLoader universalImageLoader = new UniversalImageLoader(mContext);
+        ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
     @Override

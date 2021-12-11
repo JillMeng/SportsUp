@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import com.google.firebase.auth.FirebaseAuth;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -54,14 +54,14 @@ public class FriendList extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Dashboard.class));
                         overridePendingTransition(0,0);
                         return true;
-                    case R.id.reminder:
+                    case R.id.schedule:
                         startActivity(new Intent(getApplicationContext()
-                                , Reminder.class));
+                                ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
                         startActivity(new Intent(getApplicationContext()
-                                ,Info.class));
+                                ,FriendList.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.friends:
