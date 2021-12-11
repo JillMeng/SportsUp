@@ -68,6 +68,10 @@ public class Dashboard extends AppCompatActivity {
                                 ,InfoActivity.class));
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.friends:
+                        startActivity(new Intent(getApplicationContext(), FriendList.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
@@ -152,7 +156,7 @@ public class Dashboard extends AppCompatActivity {
         String uid = user.getUid();
         TextView userName = (TextView) findViewById(R.id.textUsername);
         // Show name
-        mDatabase.child("Users").child(uid).child("Name").addValueEventListener(new ValueEventListener() {
+        mDatabase.child("user_account_settings").child(uid).child("username").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userName.setText(dataSnapshot.getValue(String.class));
