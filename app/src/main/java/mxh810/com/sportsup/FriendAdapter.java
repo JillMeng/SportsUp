@@ -1,7 +1,5 @@
 package mxh810.com.sportsup;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,20 +44,19 @@ public class FriendAdapter extends FirebaseRecyclerAdapter<Friend, FriendAdapter
         public ReviewHolder(@NonNull View friendView) {
             super(friendView);
             user_name = friendView.findViewById(R.id.user_name);
-
-
-            friendView.setOnClickListener((v) -> {
-                int position = getLayoutPosition();
-                if (position != RecyclerView.NO_POSITION) {
-                    Intent intent = new Intent(friendView.getContext(), Dashboard.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("target_user", new Friend(user_name.getText().toString(),user_devise_id));
-                    intent.putExtras(bundle);
-                    Log.v(TAG, user_name.getText().toString());
-                    friendView.getContext().startActivity(intent);
-                }
-
-            });
+//            friendView.setOnClickListener((v) -> {
+//                int position = getLayoutPosition();
+//                if (position != RecyclerView.NO_POSITION) {
+//                    Intent intent = new Intent(friendView.getContext(), SendNotification.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("current_user",currentUser);
+//                    bundle.putSerializable("target_user", new User(user_name.getText().toString(),user_devise_id));
+//                    intent.putExtras(bundle);
+//                    Log.v(TAG, user_name.getText().toString());
+//                    friendView.getContext().startActivity(intent);
+//                }
+//
+//            });
         }
     }
 

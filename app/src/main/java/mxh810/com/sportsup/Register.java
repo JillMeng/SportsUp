@@ -14,6 +14,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,7 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
+import mxh810.com.sportsup.model.Friend;
 import mxh810.com.sportsup.utils.FireBaseUtil;
 
 public class Register extends AppCompatActivity {
@@ -34,6 +38,7 @@ public class Register extends AppCompatActivity {
     private TextView loadingPleaseWait;
     private Button btnRegister;
     private ProgressBar mProgressBar;
+    FirebaseDatabase mFirebaseDatabase;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -41,6 +46,7 @@ public class Register extends AppCompatActivity {
     private FireBaseUtil firebaseUtil;
 
     private DatabaseReference myRef;
+    private String CLIENT_REGISTRATION_TOKEN;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +67,24 @@ public class Register extends AppCompatActivity {
                     loadingPleaseWait.setVisibility(View.VISIBLE);
 
                     firebaseUtil.registerNewEmail(email, password, username);
+                    FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+                        @Override
+                        public void onComplete(@NonNull Task<String> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(Register.this, "Something is wrong, please check your Internet connection!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (CLIENT_REGISTRATION_TOKEN.length() < 1) {
+                                    CLIENT_REGISTRATION_TOKEN = task.getResult();
+                                }
+                                Log.e("CLIENT_REGISTRATION_TOKEN", CLIENT_REGISTRATION_TOKEN);
+                                Toast.makeText(Register.this, "CLIENT_TOKEN IS: " + CLIENT_REGISTRATION_TOKEN, Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
+                    });
+                    DatabaseReference userList = mFirebaseDatabase.getReference("user");
+                    Friend user = new Friend(username, CLIENT_REGISTRATION_TOKEN);
+                    userList.child(username).setValue(CLIENT_REGISTRATION_TOKEN);
                 }
             }
         });
@@ -87,7 +111,7 @@ public class Register extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
         myRef = mFirebaseDatabase.getReference();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
