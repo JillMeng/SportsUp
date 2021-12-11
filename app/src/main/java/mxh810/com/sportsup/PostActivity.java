@@ -22,7 +22,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import mxh810.com.sportsup.utils.PermissionUtil;
 
@@ -44,6 +47,50 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+
+        //Initialize NavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
+
+        //Set Dashboard Selected
+        bottomNavigationView.setSelectedItemId(R.id.post);
+        //Set Dashboard Selected
+        bottomNavigationView.setSelectedItemId(R.id.post);
+
+//        setupFirebaseAuth();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.dashboard:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Dashboard.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.post:
+                        return true;
+                    case R.id.info:
+                        startActivity(new Intent(getApplicationContext()
+                                ,PostActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.friends:
+                        Intent intent = new Intent(getApplicationContext(), FriendList.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("current_user_id", currentUser.getUid());
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+
+
         Log.d(TAG, "onCreate: started.");
 
         if (checkPermissionsArray(PermissionUtil.PERMISSIONS)) {
