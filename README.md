@@ -3,10 +3,13 @@ A wellness app that aims to help users establish a healthy lifestyle. Functions 
 # Target Users
 People who are interested in sports, tend to find a buddy and are willing to share their experience with others
 # Main Function Screens
-/User Login Page
-/DashBoard (Home Page)
-/Friends
-/User Info
-# Subfunctions Screen
+User Login Page <br />
+DashBoard (Home Page) <br />
+Post Picture <br />
+Friends <br />
+User Info <br />
+# Other Function Screens
+Vedio Players <br />
+Set up workout Reminder <br />
 
 
