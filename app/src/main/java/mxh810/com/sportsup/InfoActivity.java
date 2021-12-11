@@ -78,7 +78,7 @@ public class InfoActivity extends AppCompatActivity {
                         return true;
                     case R.id.schedule:
                         startActivity(new Intent(getApplicationContext()
-                                ,Schedule.class));
+                                ,PostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.info:
@@ -87,9 +87,6 @@ public class InfoActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        //Initialize NavigationView
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
 
         //Set Dashboard Selected
         bottomNavigationView.setSelectedItemId(R.id.dashboard);
