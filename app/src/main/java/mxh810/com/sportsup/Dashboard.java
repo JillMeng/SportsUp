@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -78,6 +80,15 @@ public class Dashboard extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        FloatingActionButton reminderBtn = (FloatingActionButton)findViewById(R.id.alarmButton);
+        reminderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, Reminder.class);
+                startActivity(intent);
             }
         });
     }

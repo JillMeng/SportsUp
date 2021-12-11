@@ -93,14 +93,7 @@ public class InfoActivity extends AppCompatActivity {
             }
         });
 
-        Button reminderBtn = findViewById(R.id.setReminder);
-        reminderBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(InfoActivity.this, Reminder.class);
-                startActivity(intent);
-            }
-        });
+
 
 //        //Set Dashboard Selected
 //        bottomNavigationView.setSelectedItemId(R.id.dashboard);

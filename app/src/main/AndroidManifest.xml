@@ -24,6 +24,7 @@
         <activity android:name=".PostActivity"/>
         <activity android:name=".SavePostActivity"/>
         <activity android:name=".UpdateAvatarActivity"/>
+        <activity android:name=".Reminder"/>
         <activity
             android:name=".Recipes"
             android:exported="true" />
