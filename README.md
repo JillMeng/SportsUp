@@ -6,17 +6,22 @@ People who are interested in sports, tend to find a buddy and are willing to sha
 User Login Page <br />
 DashBoard (Home Page) <br />
 Post Picture <br />
-Friends <br />
+FriendList <br />
 User Info <br />
 # Other Function Screens
 Vedio Players <br />
 Set up workout Reminder <br />
+Edit User Info <br />
+Enable Camera <br />
 # Screen Snipets
-![image](https://user-images.githubusercontent.com/76186275/145693520-2d236d8c-af6d-4896-8c5e-a38769e32dc1.png)
-![image](https://user-images.githubusercontent.com/76186275/145693578-f0d8f0ae-9fae-4956-80de-bb06a091993c.png)
-![image](https://user-images.githubusercontent.com/76186275/145693588-94303269-17e1-4693-a614-0bee4b04d900.png)
-![image](https://user-images.githubusercontent.com/76186275/145693554-1284a5ca-2cde-42e4-be4b-e9bc8993013b.png)
-![image](https://user-images.githubusercontent.com/76186275/145693558-f88c4578-e7dd-41cf-8e90-b8d6d7209484.png)
+![image](https://user-images.githubusercontent.com/76186275/145694014-9a53c75a-9145-4a09-99d7-e3f99aac08f8.png)
+![image](https://user-images.githubusercontent.com/76186275/145694022-ea314a61-5a66-42c4-b62d-a446ee6df93e.png)
+![image](https://user-images.githubusercontent.com/76186275/145694031-e61dad78-28c5-4b09-b079-3e58aa412f92.png)
+![image](https://user-images.githubusercontent.com/76186275/145694038-8144a6d9-2435-46c5-85f1-53f15f043cc9.png)
+![image](https://user-images.githubusercontent.com/76186275/145694049-555a8f4d-d7a0-4a9d-9f8e-ff86839b5776.png)
+![image](https://user-images.githubusercontent.com/76186275/145694054-6f988e7d-f630-4ed9-935e-a311a83b23dc.png)
+![image](https://user-images.githubusercontent.com/76186275/145694061-4c9cc00d-3133-4cdc-8fc0-a5f7cd699cf9.png)
+
 
 
 
