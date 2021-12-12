@@ -14,7 +14,7 @@ Set up workout Reminder <br />
 Edit User Info <br />
 Enable Camera <br />
 # Sensors and Notifications
-Implemented camera sensor and location sensor while creating post
+Implemented camera sensor and location sensor while creating post <br />
 Enbaled daily workout reminder notification to get user engaged
 # Screen Snipets
 ![image](https://user-images.githubusercontent.com/76186275/145694014-9a53c75a-9145-4a09-99d7-e3f99aac08f8.png)
