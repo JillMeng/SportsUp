@@ -38,9 +38,6 @@ public class PostActivity extends AppCompatActivity {
     private Context mContext = PostActivity.this;
     private ViewPager mViewPager;
     private FirebaseUser current_user;
-    LocationManager locationManager;
-    double latitude_;
-    double longitude_;
 
     private static final int PHOTO_FRAGMENT_NUM = 1;
     private static final int GALLERY_FRAGMENT_NUM = 2;
@@ -182,14 +179,6 @@ public class PostActivity extends AppCompatActivity {
         if (requestCode == CAMERA_REQUEST_CODE && Objects.nonNull(data)) {
             Log.d(TAG, "onActivityResult: done taking a photo.");
             Log.d(TAG, "onActivityResult: attempting to navigate to final share screen.");
-            locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
-                        0, locationListenerGPS);
-                return;
-            }
-
 
             Bitmap bitmap;
             bitmap = (Bitmap) data.getExtras().get("data");
@@ -197,8 +186,6 @@ public class PostActivity extends AppCompatActivity {
             try {
                 Log.d(TAG, "onActivityResult: received new bitmap from camera: " + bitmap);
                 Intent intent = new Intent(this, SavePostActivity.class);
-                intent.putExtra("location_latitude", latitude_);
-                intent.putExtra("location_longitude", longitude_);
                 intent.putExtra(getString(R.string.selected_bitmap), bitmap);
                 startActivity(intent);
             } catch (NullPointerException e) {
@@ -209,24 +196,6 @@ public class PostActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    LocationListener locationListenerGPS = new LocationListener() {
-        @Override
-        public void onLocationChanged(android.location.Location location) {
-            latitude_ = location.getLatitude();
-            longitude_ = location.getLongitude();
-
-        }
-
-        @Override
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-
-        }
-
-        @Override
-        public void onProviderEnabled(String provider) {
-
-        }
-    };
 }
 
 

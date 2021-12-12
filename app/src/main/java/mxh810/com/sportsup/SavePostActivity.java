@@ -1,7 +1,12 @@
 package mxh810.com.sportsup;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,6 +44,12 @@ public class SavePostActivity extends AppCompatActivity {
     private DatabaseReference myRef;
     private FireBaseUtil mFirebaseMethods;
 
+    LocationManager locationManager;
+    Context mContext;
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+    TextView latitude;
+    TextView longitude;
+
     //widgets
     private EditText mCaption;
 
@@ -58,12 +71,6 @@ public class SavePostActivity extends AppCompatActivity {
         mCaption = (EditText) findViewById(R.id.caption);
 
         setupFirebaseAuth();
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        Double latitude = (Double)extras.get("location_latitude");
-        Double longitude = (Double)extras.get("location_longitude");
-        ((TextView) findViewById(R.id.longtitude)).setText("Longitude : " + longitude +"");
-        ((TextView) findViewById(R.id.latitude)).setText("latitude" + latitude + "");
 
 
         ImageView backArrow = (ImageView) findViewById(R.id.ivBackArrow);
@@ -88,7 +95,58 @@ public class SavePostActivity extends AppCompatActivity {
             }
         });
 
+        mContext = this;
+
+        latitude = findViewById(R.id.latitude);
+        longitude = findViewById(R.id.longtitude);
+
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // ask permissions here using below code
+
+            Toast.makeText(this, "No Location Permission", Toast.LENGTH_LONG).show();
+
+            latitude.setText("No Permission");
+            longitude.setText("No Permission");
+
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_LOCATION);
+        }
+        locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
+
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0,
+                0, locationListenerGPS);
+
+
     }
+
+    LocationListener locationListenerGPS = new LocationListener() {
+        @Override
+        public void onLocationChanged(android.location.Location location) {
+            double latitude_ = location.getLatitude();
+            double longitude_ = location.getLongitude();
+            latitude.setText( "Latitude : " + String.valueOf(latitude_).substring(0,10));
+            longitude.setText("Longitude: " +String.valueOf(longitude_).substring(0,10));
+
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
 
     /**
      * gets the image url from the incoming intent and displays the chosen image
@@ -161,6 +219,41 @@ public class SavePostActivity extends AppCompatActivity {
         if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATION: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    if (ContextCompat.checkSelfPermission(this,
+                            Manifest.permission.ACCESS_FINE_LOCATION)
+                            == PackageManager.PERMISSION_GRANTED) {
+
+                        //Request location updates:
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListenerGPS);
+                    }
+
+                } else {
+                    Toast.makeText(this, "No Location Permission", Toast.LENGTH_LONG).show();
+
+                    latitude.setText("No Permission");
+                    longitude.setText("No Permission");
+
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_LOCATION);
+                }
+                return;
+            }
+
+        }
+
     }
 }
 
