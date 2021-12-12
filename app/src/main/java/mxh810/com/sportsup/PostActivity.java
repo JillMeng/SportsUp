@@ -27,6 +27,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Objects;
+
 import mxh810.com.sportsup.utils.PermissionUtil;
 
 public class PostActivity extends AppCompatActivity {
@@ -35,6 +37,7 @@ public class PostActivity extends AppCompatActivity {
     private static final int VERIFY_PERMISSIONS_REQUEST = 1;
     private Context mContext = PostActivity.this;
     private ViewPager mViewPager;
+    private FirebaseUser current_user;
     LocationManager locationManager;
     double latitude_;
     double longitude_;
@@ -52,8 +55,6 @@ public class PostActivity extends AppCompatActivity {
         //Initialize NavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.navigation);
 
-        //Set Dashboard Selected
-        bottomNavigationView.setSelectedItemId(R.id.post);
         //Set Dashboard Selected
         bottomNavigationView.setSelectedItemId(R.id.post);
 
@@ -78,7 +79,6 @@ public class PostActivity extends AppCompatActivity {
                     case R.id.friends:
                         Intent intent = new Intent(getApplicationContext(), FriendList.class);
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable("current_user_id", currentUser.getUid());
                         intent.putExtras(bundle);
                         startActivity(intent);
                         overridePendingTransition(0,0);
@@ -179,7 +179,7 @@ public class PostActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CAMERA_REQUEST_CODE) {
+        if (requestCode == CAMERA_REQUEST_CODE && Objects.nonNull(data)) {
             Log.d(TAG, "onActivityResult: done taking a photo.");
             Log.d(TAG, "onActivityResult: attempting to navigate to final share screen.");
             locationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
@@ -204,6 +204,9 @@ public class PostActivity extends AppCompatActivity {
             } catch (NullPointerException e) {
                 Log.d(TAG, "onActivityResult: NullPointerException: " + e.getMessage());
             }
+        }else{
+            Intent intent = new Intent(this, PostActivity.class);
+            startActivity(intent);
         }
     }
     LocationListener locationListenerGPS = new LocationListener() {
