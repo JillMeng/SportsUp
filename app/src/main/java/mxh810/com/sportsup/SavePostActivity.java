@@ -58,6 +58,12 @@ public class SavePostActivity extends AppCompatActivity {
         mCaption = (EditText) findViewById(R.id.caption);
 
         setupFirebaseAuth();
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        Double latitude = (Double)extras.get("location_latitude");
+        Double longitude = (Double)extras.get("location_longitude");
+        ((TextView) findViewById(R.id.longtitude)).setText("Longitude : " + longitude +"");
+        ((TextView) findViewById(R.id.latitude)).setText("latitude" + latitude + "");
 
 
         ImageView backArrow = (ImageView) findViewById(R.id.ivBackArrow);
@@ -78,16 +84,7 @@ public class SavePostActivity extends AppCompatActivity {
                 //upload the image to firebase
                 Toast.makeText(SavePostActivity.this, "Attempting to upload new photo", Toast.LENGTH_SHORT).show();
                 String caption = mCaption.getText().toString();
-                Intent intent = getIntent();
-                Bundle extras = intent.getExtras();
-                String latitude = (String)extras.get("location_latitude");
-                String longitude = (String)extras.get("location_longitude");
-                StringBuilder sb = new StringBuilder("latitude: ");
-                sb.append(latitude);
-                sb.append(". longitude: ");
-                sb.append(longitude);
-                sb.append(" .");
-                mFirebaseMethods.uploadNewPhoto(caption, bitmap, sb.toString());
+                mFirebaseMethods.uploadNewPhoto(caption, bitmap);
             }
         });
 
