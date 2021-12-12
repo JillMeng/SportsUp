@@ -13,6 +13,9 @@ Vedio Players <br />
 Set up workout Reminder <br />
 Edit User Info <br />
 Enable Camera <br />
+# Sensors and Notifications
+Implemented camera sensor and location sensor while creating post
+Enbaled daily workout reminder notification to get user engaged
 # Screen Snipets
 ![image](https://user-images.githubusercontent.com/76186275/145694014-9a53c75a-9145-4a09-99d7-e3f99aac08f8.png)
 ![image](https://user-images.githubusercontent.com/76186275/145694022-ea314a61-5a66-42c4-b62d-a446ee6df93e.png)
