@@ -1,5 +1,5 @@
 # SportsUp
-A wellness app that aims to help users establish a healthy lifestyle. Functions include locating sports facilities nearby, finding workout buddies, posting workout videos, motivating daily exercise check-ins, and promoting healthy-eating recipes and rewards. 
+A wellness app that aims to help users establish a healthy lifestyle. Functions include login authentication, selecting and playing workout vedios, setting up workout reminder, posting workout pictures via camera sensor and location sensor, displaying friend list, and editting user info. 
 # Target Users
 People who are interested in sports, tend to find a buddy and are willing to share their experience with others
 # Main Function Screens
