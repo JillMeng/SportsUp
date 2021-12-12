@@ -57,7 +57,7 @@ public class PostActivity extends AppCompatActivity {
         //Set Dashboard Selected
         bottomNavigationView.setSelectedItemId(R.id.post);
 
-//        setupFirebaseAuth();
+//        setupFiregitbaseAuth();
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -88,9 +88,7 @@ public class PostActivity extends AppCompatActivity {
             }
         });
 
-
-
-
+        
         Log.d(TAG, "onCreate: started.");
 
         if (checkPermissionsArray(PermissionUtil.PERMISSIONS)) {
